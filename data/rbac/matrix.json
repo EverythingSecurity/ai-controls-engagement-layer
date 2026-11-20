@@ -1,0 +1,89 @@
+{
+  "_doc": "Grant syntax: resource:action[@scope][#qualifier]. Scope defaults to the role's default_scope. Source: spec A4. Anything not listed is denied.",
+  "_deviations": [
+    "assessment_package:assign added for principal_engagement_lead (spec B10 names package:assign; A4 does not list it).",
+    "principal_content_manager has framework_recommendation/generated_question_set read at scope 'content' (A4 lists R) which can never match client-owned rows, honouring A6 'no client data'.",
+    "department_lead scoping_response:update uses scope dept (A4 says task) so leads can act on their department's scoping tasks."
+  ],
+  "platform_super_admin": ["principal:provision@platform","system_config:read@platform","system_config:update@platform"],
+  "platform_auditor": ["audit_log:read@platform","config_history:read@platform"],
+  "principal_admin": [
+    "client_tenant:create","client_tenant:read","client_tenant:update","client_tenant:delete",
+    "user:create","user:read","user:update","user:delete",
+    "scoping_template:read","scoping_response:read","applicability_rule:read","framework_recommendation:read",
+    "framework_assignment:read","generated_question_set:read","assessment_package:read",
+    "control_assessment:read","finding:read","clarification:read","report:read","remediation:read",
+    "scoring_config:create","scoring_config:read","scoring_config:update","scoring_config:approve","audit_log:read"
+  ],
+  "principal_engagement_lead": [
+    "client_tenant:read","client_tenant:update","scoping_template:read","scoping_response:read","applicability_rule:read",
+    "framework_recommendation:read","framework_recommendation:approve",
+    "framework_assignment:create","framework_assignment:update","framework_assignment:approve",
+    "generated_question_set:read","generated_question_set:approve",
+    "assessment_package:create","assessment_package:read","assessment_package:update","assessment_package:assign",
+    "submission:read","control_assessment:read","finding:read","finding:approve","clarification:read","report:read",
+    "remediation:read","scoring_config:read","audit_log:read"
+  ],
+  "principal_assessor": [
+    "client_tenant:read","scoping_template:read","scoping_response:read","applicability_rule:read","framework_recommendation:read",
+    "framework_assignment:read","generated_question_set:read","generated_question_set:update","assessment_package:read",
+    "response:read","evidence:read","submission:read",
+    "control_assessment:create","control_assessment:read","control_assessment:update",
+    "finding:create","finding:read","finding:update","clarification:create","clarification:read","clarification:update",
+    "report:read","remediation:read","scoring_config:read"
+  ],
+  "principal_analyst": [
+    "client_tenant:read","scoping_template:read","scoping_response:read","applicability_rule:read","framework_recommendation:read",
+    "framework_assignment:read","generated_question_set:read","assessment_package:read",
+    "response:read","evidence:read","submission:read",
+    "control_assessment:create#draft","control_assessment:read","control_assessment:update#draft",
+    "finding:create#draft","finding:read","finding:update#draft",
+    "clarification:create","clarification:read","clarification:update",
+    "report:read#draft","remediation:read","scoring_config:read"
+  ],
+  "principal_content_manager": [
+    "scoping_template:create","scoping_template:read","scoping_template:update","scoping_template:approve",
+    "applicability_rule:create","applicability_rule:read","applicability_rule:update","applicability_rule:approve",
+    "framework_recommendation:read","generated_question_set:read","scoring_config:read"
+  ],
+  "principal_report_approver": [
+    "client_tenant:read","control_assessment:read","finding:read","report:read","report:approve","scoring_config:read"
+  ],
+  "client_admin": [
+    "client_tenant:read","client_tenant:update","user:create","user:read","user:update","user:delete",
+    "department:create","department:read","department:update","department:delete",
+    "scoping_response:read","response:read","evidence:read","task_delegation:read","remediation:read","audit_log:read"
+  ],
+  "client_contributor": [
+    "client_tenant:read","user:read","department:read",
+    "scoping_response:create","scoping_response:read","scoping_response:update","scoping_response:submit",
+    "framework_recommendation:read#summary","framework_assignment:read","generated_question_set:read","assessment_package:read",
+    "task_delegation:create","task_delegation:read","task_delegation:update","task_delegation:delete",
+    "response:create","response:read","response:update","response:submit",
+    "evidence:create","evidence:read","evidence:update","evidence:delete",
+    "submission:submit","control_assessment:read#final","finding:read","clarification:read","clarification:update#reply",
+    "report:read#released","remediation:create","remediation:read","remediation:update"
+  ],
+  "department_lead": [
+    "user:read","department:read","scoping_response:update",
+    "generated_question_set:read","assessment_package:read",
+    "task_delegation:create","task_delegation:read","task_delegation:update",
+    "response:create","response:read","response:update","response:submit",
+    "evidence:create","evidence:read","evidence:update","evidence:delete",
+    "finding:read","clarification:read","clarification:update",
+    "remediation:create","remediation:read","remediation:update"
+  ],
+  "department_respondent": [
+    "scoping_response:update","generated_question_set:read","assessment_package:read","task_delegation:read",
+    "response:create","response:read","response:update","evidence:create","evidence:read","evidence:update",
+    "remediation:read","remediation:update"
+  ],
+  "client_reviewer": [
+    "scoping_response:read","generated_question_set:read","assessment_package:read","task_delegation:read",
+    "response:read","evidence:read","remediation:read"
+  ],
+  "client_exec_viewer": [
+    "scoping_response:read","framework_assignment:read","assessment_package:read#summary",
+    "control_assessment:read#final","finding:read","report:read#released","remediation:read"
+  ]
+}

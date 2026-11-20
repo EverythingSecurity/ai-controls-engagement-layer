@@ -1,0 +1,17 @@
+{
+  "version": "scp-demo-0.1",
+  "_status": "DEMO. Illustrative subset of the B2 domains. Not an approved questionnaire.",
+  "questions": [
+    {"id":"SCP-ORG-001","domain":"organisation","text":"Which best describes your sector?","answer_type":"single_select","options":["financial_services","technology","healthcare","public_sector","other"],"required":true,"show_if":null,"feeds_attributes":["org.sector"]},
+    {"id":"SCP-REG-001","domain":"regulatory_status","text":"Are you a licensed financial entity?","answer_type":"boolean","required":true,"show_if":null,"feeds_attributes":["reg.financial_entity"],"help_text":"Banks, insurers, payment/e-money institutions, investment firms, crypto-asset service providers."},
+    {"id":"SCP-ICT-001","domain":"ict_third_parties","text":"Do you provide ICT services to financial entities?","answer_type":"boolean","required":true,"show_if":{"all":[{"attr":"reg.financial_entity","op":"neq","value":true}]},"feeds_attributes":["ict.provides_to_financial_entities"]},
+    {"id":"SCP-GEO-001","domain":"jurisdiction","text":"Where are your customers?","answer_type":"multi_select","options":["EU","QA","GCC_OTHER","US","OTHER"],"required":true,"show_if":null,"feeds_attributes":["geo.customer_countries"]},
+    {"id":"SCP-DATA-001","domain":"personal_data","text":"Do you process personal data?","answer_type":"boolean","required":true,"show_if":null,"feeds_attributes":["data.personal"]},
+    {"id":"SCP-DATA-002","domain":"personal_data","text":"What is the volume of personal data records?","answer_type":"single_select","options":["low","medium","high"],"required":true,"show_if":{"all":[{"attr":"data.personal","op":"eq","value":true}]},"feeds_attributes":["data.volume_band"]},
+    {"id":"SCP-AI-001","domain":"ai_usage","text":"Does your organisation develop, deploy or procure AI systems?","answer_type":"multi_select","options":["develop","deploy","procure","none"],"required":true,"show_if":null,"feeds_attributes":["ai.role"],"help_text":"Include embedded AI in vendor products."},
+    {"id":"SCP-AI-004","domain":"ai_usage","text":"What is the highest risk level of your AI use cases?","answer_type":"single_select","options":["minimal","limited","high"],"required":true,"show_if":{"all":[{"attr":"ai.role","op":"contains_any","value":["develop","deploy","procure"]}]},"feeds_attributes":["ai.risk_level"]},
+    {"id":"SCP-AI-005","domain":"ai_usage","text":"Is any AI system placed on, or its output used in, the EU market?","answer_type":"boolean","required":true,"show_if":{"all":[{"attr":"ai.role","op":"contains_any","value":["develop","deploy","procure"]}]},"feeds_attributes":["ai.eu_market"]},
+    {"id":"SCP-CERT-001","domain":"certifications_contracts","text":"Do customers or contracts require you to meet any of these standards?","answer_type":"multi_select","options":["iso27001","iso42001","iso27701","gdpr","dora","eu_ai_act","nist_ai_rmf"],"required":false,"show_if":null,"feeds_attributes":["contract.required_standards"]},
+    {"id":"SCP-GOAL-001","domain":"objective","text":"Why are you engaging us?","answer_type":"single_select","options":["certification","regulatory","customer_demand","internal"],"required":true,"show_if":null,"feeds_attributes":["goal.type"]}
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "_doc": "State rule (A5.4). key = resource:action -> { attr, allowed[] } read from the resource. Missing attribute fails closed (deny).",
+  "response:create":        {"attr":"package_state","allowed":["released","in_fulfilment"]},
+  "response:update":        {"attr":"package_state","allowed":["released","in_fulfilment"]},
+  "response:submit":        {"attr":"package_state","allowed":["released","in_fulfilment"]},
+  "evidence:create":        {"attr":"package_state","allowed":["released","in_fulfilment"]},
+  "evidence:update":        {"attr":"package_state","allowed":["released","in_fulfilment"]},
+  "evidence:delete":        {"attr":"package_state","allowed":["released","in_fulfilment"]},
+  "task_delegation:create": {"attr":"package_state","allowed":["released","in_fulfilment"]},
+  "task_delegation:update": {"attr":"package_state","allowed":["released","in_fulfilment"]},
+  "submission:submit":      {"attr":"package_state","allowed":["in_fulfilment"]},
+  "control_assessment:create": {"attr":"package_state","allowed":["submitted_locked","in_assessment"]},
+  "control_assessment:update": {"attr":"package_state","allowed":["submitted_locked","in_assessment"]},
+  "scoping_response:create": {"attr":"scoping_state","allowed":["not_started","in_progress"]},
+  "scoping_response:update": {"attr":"scoping_state","allowed":["not_started","in_progress"]},
+  "scoping_response:submit": {"attr":"scoping_state","allowed":["in_progress"]},
+  "report:approve":         {"attr":"report_state","allowed":["assessor_complete"]}
+}

@@ -1,0 +1,31 @@
+{
+  "_status": "DEMO / ILLUSTRATIVE. Transcribed from the spec B4 seed table for frameworks present in the library. Not legal advice. Production rules need principal_content_manager authoring and principal_admin approval.",
+  "_assumptions": [
+    "The spec's 'Data governance and privacy framework' has no library entry; mapped to ISO/IEC 27701 here. Confirm.",
+    "No GDPR rule is seeded: the spec has none and a legal-applicability claim must not be invented.",
+    "Qatar PDPPL is not in the library, so no PDPPL rule exists."
+  ],
+  "rules": [
+    {"rule_id":"APP-DORA-001","version":1,"target_framework_id":"dora","outcome":"required","confidence":"high",
+     "condition":{"any":[{"attr":"reg.financial_entity","op":"eq","value":true},{"attr":"ict.provides_to_financial_entities","op":"eq","value":true}],"all":[{"attr":"geo.customer_countries","op":"contains_any","value":["EU"]}]},
+     "rationale":"DORA applies to EU financial entities and their ICT third-party providers.","authority_reference":"Regulation (EU) 2022/2554"},
+    {"rule_id":"APP-EUAIACT-001","version":1,"target_framework_id":"eu_ai_act","outcome":"required","confidence":"high",
+     "condition":{"all":[{"attr":"ai.eu_market","op":"eq","value":true},{"attr":"ai.role","op":"contains_any","value":["develop","deploy","procure"]}]},
+     "rationale":"AI systems placed on or used in the EU market fall in scope of the EU AI Act.","authority_reference":"Regulation (EU) 2024/1689"},
+    {"rule_id":"APP-ISO42001-001","version":1,"target_framework_id":"iso42001","outcome":"recommended","confidence":"high",
+     "condition":{"all":[{"attr":"ai.role","op":"contains_any","value":["develop","deploy"]}]},
+     "rationale":"AI management system best practice for organisations that develop or deploy AI.","authority_reference":"ISO/IEC 42001:2023"},
+    {"rule_id":"APP-NISTAIRMF-001","version":1,"target_framework_id":"nist_ai_rmf","outcome":"recommended","confidence":"medium",
+     "condition":{"all":[{"attr":"ai.role","op":"contains_any","value":["develop","deploy"]},{"attr":"ai.risk_level","op":"eq","value":"high"}]},
+     "rationale":"Structured AI risk management is a good fit for developers and deployers of high-risk AI.","authority_reference":"NIST AI RMF 1.0"},
+    {"rule_id":"APP-ISO27001-001","version":1,"target_framework_id":"iso27001","outcome":"required","confidence":"high",
+     "condition":{"any":[{"attr":"goal.type","op":"eq","value":"certification"},{"attr":"contract.required_standards","op":"contains_any","value":["iso27001"]}]},
+     "rationale":"Certification is the stated goal, or a contract mandates it.","authority_reference":"ISO/IEC 27001:2022"},
+    {"rule_id":"APP-ISO27701-001","version":1,"target_framework_id":"iso27701","outcome":"recommended","confidence":"medium",
+     "condition":{"all":[{"attr":"data.personal","op":"eq","value":true},{"attr":"data.volume_band","op":"in","value":["medium","high"]}]},
+     "rationale":"Material personal-data processing benefits from a privacy information management system (assumed mapping, see _assumptions).","authority_reference":"ISO/IEC 27701"},
+    {"rule_id":"APP-CONTRACT-001","version":1,"target_framework_id":"@contract.required_standards","outcome":"required","confidence":"high",
+     "condition":{"all":[{"attr":"contract.required_standards","op":"exists"}]},
+     "rationale":"A customer or contract mandates this standard.","authority_reference":"Contractual requirement"}
+  ]
+}

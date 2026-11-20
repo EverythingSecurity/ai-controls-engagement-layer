@@ -1,0 +1,16 @@
+[
+  {"name":"platform_super_admin","tier":"platform","requires_mfa":true,"default_scope":"platform","description":"Provision principals, system config, break-glass. No client content unless break-glass approved and logged."},
+  {"name":"platform_auditor","tier":"platform","requires_mfa":true,"default_scope":"platform","description":"Read-only audit logs and config history."},
+  {"name":"principal_admin","tier":"principal","requires_mfa":true,"default_scope":"principal","description":"Manage principal org, clients, users, scoring config."},
+  {"name":"principal_engagement_lead","tier":"principal","requires_mfa":true,"default_scope":"asg","description":"Run engagements for assigned clients, approve framework assignment."},
+  {"name":"principal_assessor","tier":"principal","requires_mfa":true,"default_scope":"asg","description":"Review responses and evidence, score controls, raise findings."},
+  {"name":"principal_analyst","tier":"principal","requires_mfa":true,"default_scope":"asg","description":"Prepare assessments, draft findings (cannot finalise)."},
+  {"name":"principal_content_manager","tier":"principal","requires_mfa":true,"default_scope":"content","description":"Maintain rules, questionnaires, templates, mappings. No client data."},
+  {"name":"principal_report_approver","tier":"principal","requires_mfa":true,"default_scope":"asg","description":"Sign off and release reports."},
+  {"name":"client_admin","tier":"client","requires_mfa":true,"default_scope":"own","description":"Manage own org users, departments, role assignments."},
+  {"name":"client_contributor","tier":"client","requires_mfa":false,"default_scope":"own","description":"Complete scoping, delegate, review, submit."},
+  {"name":"department_lead","tier":"client","requires_mfa":false,"default_scope":"dept","description":"Owns a department's tasks."},
+  {"name":"department_respondent","tier":"client","requires_mfa":false,"default_scope":"task","description":"Answers and uploads for assigned tasks."},
+  {"name":"client_reviewer","tier":"client","requires_mfa":false,"default_scope":"own","description":"Internal QA before submission; cannot edit answers."},
+  {"name":"client_exec_viewer","tier":"client","requires_mfa":false,"default_scope":"own","description":"Read-only dashboards and final reports."}
+]
